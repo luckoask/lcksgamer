@@ -8,6 +8,8 @@
   body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: darkred; /* Set the background color to dark red */
+    color: white; /* Set the text color to white for better visibility */
   }
   .container {
     margin-top: 100px;
@@ -22,7 +24,7 @@
 </head>
 <body>
 <div class="container">
-  <img src="https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg" alt="Marry Me Image" width="300">
+  <img src="https://example.com/your-image.jpg" alt="Marry Me Image" width="300">
   <h2>Will you marry me?</h2>
   <button id="yesBtn">Yes</button>
   <button id="noBtn">No</button>
@@ -40,7 +42,7 @@
   });
 
   function sendMessageToDiscord(message) {
-    fetch('https://discord.com/api/webhooks/1238046270640099369/X7KAuWf42Siyej0QJkTNe7le5XAtzQrmMDSj8-9AOfcOAiaWe2dhczhtXW1xEvMCSyua', {
+    fetch('YOUR_DISCORD_WEBHOOK_URL', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
