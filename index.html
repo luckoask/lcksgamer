@@ -7,7 +7,7 @@
     <style>
         /* CSS styles */
         button {
-            background-color: #4CAF50; /* Green */
+            background-color: #49b14c; /* Green */
             border: none;
             color: white;
             padding: 15px 32px;
@@ -63,9 +63,6 @@
         <button onclick="loadProgress()" class="top-right small-button">Load</button>
     </div>
 
-    <div id="ludvik"></div>
-    <script src="http://www.ludvik.sk/ludvik.js" type="text/javascript"></script>
-
     <script>
         var coins = 0;
         var gems = 0;
@@ -73,12 +70,13 @@
         var xp = 0;
         var clickValue = 1;
         var clickMultiplier = 1.1; // Decreased multiplier
+        var xpMultiplier = 1; // XP multiplier
         var upgradeMultiplierCost = 50; // Decreased upgrade cost
 
         function clickCoin() {
             coins += clickValue * clickMultiplier;
             var randomXP = Math.floor(Math.random() * 3); // Generate random XP between 0 and 2
-            xp += randomXP;
+            xp += randomXP * xpMultiplier; // Adjust XP with multiplier
             updateUI();
         }
 
@@ -111,6 +109,7 @@
                 clickValue = 1; // Reset click value
                 upgradeMultiplierCost = 50; // Reset upgrade multiplier cost
                 clickMultiplier *= 2; // Double click multiplier
+                xpMultiplier *= 2; // Double XP multiplier
                 updateUI();
             } else {
                 alert("You don't have enough XP to rebirth!");
@@ -125,6 +124,7 @@
                 xp: xp,
                 clickValue: clickValue,
                 clickMultiplier: clickMultiplier,
+                xpMultiplier: xpMultiplier, // Save XP multiplier
                 upgradeMultiplierCost: upgradeMultiplierCost
             };
             localStorage.setItem('clickerGameData', JSON.stringify(gameData));
@@ -140,6 +140,7 @@
                 xp = gameData.xp;
                 clickValue = gameData.clickValue;
                 clickMultiplier = gameData.clickMultiplier;
+                xpMultiplier = gameData.xpMultiplier; // Load XP multiplier
                 upgradeMultiplierCost = gameData.upgradeMultiplierCost;
                 updateUI();
             }
